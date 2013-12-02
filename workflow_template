@@ -1,8 +1,8 @@
 Um Scan-Tailor nicht zu benutzen habe ich folgenden Vorschlag (noch ungetestet).
 
-#Step 1 | Vorbereitung | Convertiert mit Imagemagick das PDF in einzelne Portable Bitmaps (pbm), Greyscale
+#Step 1 | Vorbereitung | Convertiert mit 
 mkdir foo1
-convert foo.pdf -density 600 -colorspace Gray ./foo1/foo-%04d.pbm
+gs -sDEVICE=pgm -dNOPAUSE -dBATCH -r600 -sOutputFile=./foo1/foo-%04d.pgm foo.pdf
 
 #Step 2 | Vorbereitung | Wandelt die Greyscale-Bilder in Monochrome Bilder um
 mkdir foo1a
@@ -11,7 +11,7 @@ convert foo.pdf -density 600 -monochrome ./foo1/foo-%04d.pbm
 #Step 2 | Seiten teilen, drehen, schwarze Ränder entfernen | Nutzt das Programm "unpaper" (http://unpaper.berlios.de/)
 ##In der Webanwendung sollte man den Benutzer die Variable "--layout" setzen lassen. "double" für doppelseitigen Input, "single" für einseitigen
 mkdir foo2
-unpaper --layout none ./foo/foo-%04d.pbm ./foo2/foo2-%04d.pbm
+unpaper --layout double -op 2 ./foo1/foo1-%04d.pgm ./foo2/foo2-%04d.pgm
 
 #Step 3 | OCR-Erkennung (todo)
 
