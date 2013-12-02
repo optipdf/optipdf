@@ -1,18 +1,19 @@
 Um Scan-Tailor nicht zu benutzen habe ich folgenden Vorschlag (noch ungetestet).
 
-#Step 1 | Vorbereitung | Convertiert mit 
-mkdir foo1
-gs -sDEVICE=pgm -dNOPAUSE -dBATCH -r600 -sOutputFile=./foo1/foo-%04d.pgm foo.pdf
-
-#Step 2 | Vorbereitung | Wandelt die Greyscale-Bilder in Monochrome Bilder um
-mkdir foo1a
-convert foo.pdf -density 600 -monochrome ./foo1/foo-%04d.pbm
+#Step 1 | Vorbereitung | Convertiert mit Ghostscript zu hochauflösenden PGM
+gs -sDEVICE=pgmraw -dNOPAUSE -dBATCH -r600 -sOutputFile=./foo1/foo-%04d.pgm foo.pdf
 
 #Step 2 | Seiten teilen, drehen, schwarze Ränder entfernen | Nutzt das Programm "unpaper" (http://unpaper.berlios.de/)
 ##In der Webanwendung sollte man den Benutzer die Variable "--layout" setzen lassen. "double" für doppelseitigen Input, "single" für einseitigen
 mkdir foo2
 unpaper --layout double -op 2 ./foo1/foo1-%04d.pgm ./foo2/foo2-%04d.pgm
 
-#Step 3 | OCR-Erkennung (todo)
+#Step 3 | Vorbereitung des OCR | Kovertieren der PGM-Dateien in eine mehrseitige TIF
+mkdir foo3
+convert ./foo2/*.pgm ./foo3/foo_optimized.tif
+
+#Step 4 | Text in mehrseitiger tif erkennen | Nutzt Cuneinform - soll etwas schneller als 
+cuneiform -l ger -t hocr ./foo3/foo.hocr ./foo3/foo.tif
+
 
 #Step 4 | In Pdf zusammenführen (PDF-Sandwich scheint das schnellste zu sein, ToDo)
