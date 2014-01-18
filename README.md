@@ -1,4 +1,0 @@
-optipdf
-=======
-
-pdf optimization tool
