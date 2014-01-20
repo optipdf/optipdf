@@ -10,7 +10,7 @@ gs -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -r600 -o gs-%04d.tif $pdfFile
 ```
 Single tifs get unpapered by scantailor-cli
 ```sh
-scantailor-cli -v --enable-page-detection --output-dpi=300 --enable-fine-tuning --margins-top=10 --default-margins-top=10 --content-detection=aggressive --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode=black_and_white|color_grayscale --layout=$layout --despeckle=normal /*.tif scantailor/
+scantailor-cli -v --enable-page-detection --output-dpi=300 --enable-fine-tuning --margins-top=10 --default-margins-top=10 --content-detection=aggressive --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode=black_and_white|color_grayscale|mixed --layout=$layout --despeckle=normal /*.tif scantailor/
 ```
 blabla tifToHtml
 ```sh
