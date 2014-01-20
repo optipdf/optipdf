@@ -6,7 +6,7 @@ pdftk $file cat 1-$direction output $outpuFile
 ```
 #The pdf gets converted to single tifs via ghostscript
 ```sh
-gs -dNOPAUSE -dBATCH -sDEVICE=tiff24nc -r600 -o gs-%04d.tif $pdfFile
+gs -dNOPAUSE -dBATCH -sDEVICE=tiff24nc -r300 -o gs-%04d.tif $pdfFile
 ```
 #Single tifs get unpapered by scantailor-cli
 ```sh
