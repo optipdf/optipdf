@@ -10,13 +10,18 @@ gs -dNOPAUSE -dBATCH -sDEVICE=tiffg4 -r600 -o gs-%04d.tif $pdfFile
 ```
 #Single tifs get unpapered by scantailor-cli
 ```sh
-scantailor-cli -v --enable-page-detection --output-dpi=300 --enable-fine-tuning --margins-top=10 --default-margins-top=10 --content-detection=aggressive --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode=black_and_white|color_grayscale|mixed --layout=$layout --despeckle=normal /*.tif scantailor/
+scantailor-cli -v --enable-page-detection --output-dpi=300 --enable-fine-tuning --margins-top=10 --default-margins-top=10 --content-detection=aggressive --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode=black_and_white|color_grayscale|mixed --threshold=1 --layout=$layout --despeckle=normal /*.tif scantailor/
 ```
 #Text Recognition by tesseract
 ```sh
 tesseract $fifFile $filename -l=$lang -psm=1 hocr
 ```
-#Merge html and Pdf to Sandwich-Pdf
+#JBIG2-Compression
+```sh
+jbig2 -p -s -2 -j -v -b jbig gs-*
+```
+#We have to rename those files from jbig.%d04 to jbig.%d04+1
+#Merge html and jpg to Sandwich-Pdf
 ```sh
 hocr2pdf -s -i $tifFile -o $filename.pdf < $htmlFile
 ```
