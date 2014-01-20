@@ -1,5 +1,5 @@
-This is our current workflow:
-
+This could be the next workflow
+===============================
 #Pages get rotated via pdftk
 ```sh
 pdftk $file cat 1-$direction output $outpuFile
@@ -25,7 +25,6 @@ hocr2pdf -s -i $tifFile -o $filename.pdf < $htmlFile
 pdftk /*.pdf output $filname
 ```
 #Write Exif-Info
-```
 ```sh
 exiftool -overwrite_original -Title=$title -Author=$author $filename
 ```
