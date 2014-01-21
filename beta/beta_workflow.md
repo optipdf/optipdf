@@ -22,7 +22,6 @@ tesseract $fifFile $filename -l=$lang -psm=1 hocr
 // for i in *.tif; do jbig2 -p -s -2 -O ${i%%.*}.png $i; done
 jbig2 -p -s -2 -O $outpng $intif
 ```
-#We have to rename those files from jbig.%d04 to jbig.%d04+1
 #Merge html and jpg to Sandwich-Pdf
 ```sh
 // for i in *.png; do hocr2pdf -s -i $i -o ${i%%.*}.pdf < ${i%%.*}.html
