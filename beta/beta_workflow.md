@@ -22,9 +22,9 @@ tesseract $fifFile $filename -l=$lang -psm=1 hocr
 // for i in *.tif; do jbig2 -p -s -2 -O ${i%%.*}.png $i; done
 jbig2 -p -s -2 -O $outpng $intif
 ```
-#Merge html and jpg to Sandwich-Pdf
+#Merge html and png to Sandwich-Pdf
 ```sh
-// for i in *.png; do hocr2pdf -s -i $i -o ${i%%.*}.pdf < ${i%%.*}.html
+// for i in *.png; do hocr2pdf -s -i $i -o ${i%%.*}.pdf < ${i%%.*}.html; done
 hocr2pdf -s -i $tifFile -o $filename.pdf < $htmlFile
 ```
 #Combine Sandwich-Pdf to Master-Pdf
