@@ -10,7 +10,7 @@ gs -dNOPAUSE -dBATCH -sDEVICE=tiff24nc -r600 -o gs-%04d.tif $pdfFile
 ```
 #Single tifs get unpapered by scantailor-cli
 ```sh
-scantailor-cli -v --enable-page-detection --output-dpi=300 --enable-fine-tuning --margins=5 --default-margins=5 --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode=$colormode --threshold=1 --layout=$layout --despeckle=normal *.tif scantailor/
+scantailor-cli -v --enable-page-detection --enable-fine-tuning --margins=5 --default-margins=5 --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode=$colormode --threshold=1 --layout=$layout --despeckle=normal *.tif scantailor/
 ```
 #Text Recognition by tesseract
 ```sh
