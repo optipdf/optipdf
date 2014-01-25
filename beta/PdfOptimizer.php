@@ -30,27 +30,10 @@ class PdfOptimizer extends AbstractOptimizer{
     private $_path = null;
 
     public function process(){
-        debug($this->options);
-        //Create folder for processing
-        $this->_path = ROOT.DS.APP_DIR.DS.'tmp'.DS.'working'.DS.$this->options['Job']['id'].DS;
-        $dir = new Folder($this->_path,true,0755);
         //copy file to folder and rotate if needed
-        $qFile = new File(ROOT.DS.APP_DIR.DS.'tmp'.DS.'queue'.DS.$this->options['Job']['id']);
-        //###############################################
-//        $result = parent::_exec('pdfinfo '.$qFile->pwd(),'pdfinfo');
-//        if(isset($result['stdout'])&&!$result['stderr']){
-//            //do awesome math stuff
-//            debug($result['stdout']);
-//        }
-        //rotation? format?...
-        //###############################################
         if($this->options['Rotation']['option']!='0'){
             $cmd = 'pdftk '.$qFile->pwd().' cat 1-'.$this->options['Rotation']['option'].' output '.$this->_path.$this->options['Job']['id'].'.pdf';
             $result = parent::_exec($cmd,'pdftk');
-            if($result['stderr']){
-                debug($result);
-                //TODO: got some error while rotation
-            }
         }else{
             $qFile->copy($this->_path.$this->options['Job']['id'].'.pdf');
         }
@@ -58,11 +41,6 @@ class PdfOptimizer extends AbstractOptimizer{
         //convert pdf to tif
         $cmd = 'gs -dNOPAUSE -dBATCH -sDEVICE=tiff24nc -r600 -o '.$this->_path.'gs-%04d.tif '.$this->_path.$this->options['Job']['id'].'.pdf';
         $result = parent::_exec($cmd,'ghostscript');
-        if($result['stderr']){
-            debug($result);
-            //TODO: got some error while ghostscript
-            //but there are errors all the time, so take care
-        }
         unlink($this->_path.$this->options['Job']['id'].'.pdf');
         //scantailor processing
         $scanDir = new Folder($this->_path.'scantailor'.DS,true,0755);
@@ -79,14 +57,10 @@ class PdfOptimizer extends AbstractOptimizer{
             $file = new File($dir->pwd() . $file);
             $cmd = 'tesseract '.$dir->pwd().$file->name.' '.$this->_path.$file->name()." -psm 1 -l ".$this->options['Language']['option']." hocr";
             $result = parent::_exec($cmd,"tesseract");
-            if($result['return']!=0){
-                echo "some error inside tesseract";
-            }
             $file->close();
         }
         $cmd = 'pdfbeads -d '.$this->_path.'*.tif > '.$this->_path.$this->options['Job']['filename'];
         $result = parent::_exec($cmd,"pdftk");
-        debug($result);
         //exif info
         $options = '';
         if($this->options['Job']['title']!='')
@@ -96,13 +70,10 @@ class PdfOptimizer extends AbstractOptimizer{
         if($options != ''){
             $cmd = 'exiftool -overwrite_original '.$options.'-Subject="optimzed by OptiPdf.de" '.$this->_path.$this->options['Job']['filename'];
             $result = $this->_exec($cmd,"exiftool");
-            debug($result);
         }
         //cleanup the mess
-        $fdir = new Folder($this->_path.'../../finished/',true,0755);
         $file = new File($this->_path.$this->options['Job']['filename']);
         $file->copy($fdir->pwd().$this->options['Job']['id'].'_'.$this->options['Job']['filename']);
-        $dir->delete();
         return;
     }
 
