@@ -52,3 +52,29 @@
         <?php echo $this->App->markdown('input_explanation');?>
     </div>
 </div>
+<div class="topbar"></div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var bar = $('.topbar');
+        var options = {
+            target: '#content',
+            beforeSubmit: function() {
+                var percentVal = '0%';
+                bar.width(percentVal);
+            },
+            success:       showResponse,
+            uploadProgress: function(event, position, total, percentComplete) {
+                var percentVal = percentComplete + '%';
+                bar.width(percentVal);
+            }
+        };
+        $('#JobAddJobForm').submit(function() {
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+    });
+    function showResponse(responseText, statusText, xhr, $form)  {
+        alert('status: ' + statusText + '\n\nresponseText: \n' + responseText +
+            '\n\nThe output div should have already been updated with the responseText.');
+    }
+</script>
