@@ -1,14 +1,13 @@
 <div class="grid-container">
+<div class="grid-100">
 <?php
 /**
 * Page to display current job status
 */
 echo $this->App->markdown('job_status',$job);
 ?>
+</div>
 <?php if($job['Job']['status_id']==3):?>
-		    <?php if($job==null):?>
-			No job found...
-		    <?php else:?>
 		    <div class="grid-50">
 			<?php
 			echo $this->Form->create('Job',array('url'=>array('controller'=>'jobs','action'=>'download')));
@@ -27,6 +26,5 @@ echo $this->App->markdown('job_status',$job);
 			echo $this->Form->end();
 			?>
 			</div>
-		    <?php endif;?>
         <?php endif;?>
 </div>
