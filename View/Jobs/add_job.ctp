@@ -45,7 +45,7 @@
             'label'=>__('Colormode'),
             'title' => __('some text')//TODO
         ));
-        echo $this->Form->submit(__('Optimize'),array('class'=>'btn','type'=>'button'));
+        echo $this->Form->submit(__('Optimize'),array('class'=>'btn'));
         echo $this->Form->end();
         ?>
     </div>
@@ -63,7 +63,6 @@
                 var percentVal = '0%';
                 bar.width(percentVal);
             },
-            success:       showResponse,
             uploadProgress: function(event, position, total, percentComplete) {
                 var percentVal = percentComplete + '%';
                 bar.width(percentVal);
@@ -74,8 +73,4 @@
             return false;
         });
     });
-    function showResponse(responseText, statusText, xhr, $form)  {
-        alert('status: ' + statusText + '\n\nresponseText: \n' + responseText +
-            '\n\nThe output div should have already been updated with the responseText.');
-    }
 </script>
