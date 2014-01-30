@@ -1,4 +1,5 @@
 <div class="grid-container">
+    <?php echo $this->Session->flash();?>
     <h2>Optimize Pdf</h2>
     <div class="grid-33">
         <?php
