@@ -45,7 +45,7 @@
             'label'=>__('Colormode'),
             'title' => __('some text')//TODO
         ));
-        echo $this->Form->submit(__('Optimize'));
+        echo $this->Form->submit(__('Optimize'),array('class'=>'btn btn-3 btn-3e fa-arrow-right','type'=>'button'));
         echo $this->Form->end();
         ?>
     </div>
