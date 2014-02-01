@@ -1,10 +1,10 @@
 <div class="grid-container">
-    <div class="grid-66">
+    <div class="grid-50">
     <?php
         echo $this->App->markdown('about_project');
     ?>
     </div>
-    <div class="grid-33">
+    <div class="grid-50">
         <?php
         echo $this->App->markdown('about_techniques');
         ?>
