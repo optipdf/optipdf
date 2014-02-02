@@ -1,2 +1,2 @@
-Jonas arbeitet im Bereich der Buchdigitalisierung und sucht immer Wege, seine Arbeit einfacher zu machen und die (meist unvorteilhafte) Einbindung von Benutzern in den Prozess einzuschränken.
-Die Ideen welche auf dieser Seite produktiv umgesetzt werden, stammen von ihm. Wenn es also um innovative Features geht, ist er der Ansprechpartner.
+Jonas works on digitization of books and is looking for ways to make his research easier and to shrink the ()mostly unhealthy) involvement of users in digitization and processing. 
+The ideas, which come into production on this site are basically of his origin. Speaking of innovation and features, he's the guy.
