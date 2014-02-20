@@ -1,0 +1,44 @@
+nav{
+  position:absolute;
+  bottom:0;
+  & ul{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    font-size:0;
+    & li{
+      display:inline-block;
+      & a{
+        text-decoration: none;
+        display:inline-block;
+        padding:6px 12px;
+        margin: 0;
+        font-size:28px;
+        color:#fff;
+        &:hover{
+          background-color:rgba(17,136,85,.4);
+        }
+      }
+    }
+  }
+}
+a.menuico {
+  &:hover{
+    background:none;
+    & > i{
+      color:rgb(47,166,115);
+      transition:color .5s;
+    }
+  }
+  & i{
+    transition:color .3s;
+  }
+}
+#language_nav{
+  position:absolute;
+  top:0;
+  right:0;
+  & ul li a{
+    font-size:18px;
+  }
+}

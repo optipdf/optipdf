@@ -1,0 +1,2 @@
+####Lukas Strassel (Entwicklung)
+Lukas ist selbstständiger Webentwickler und Webdesigner mit einer Leidenschaft für innovative Techniken. Er studiert Informatik an der TU Darmstadt und hat eine Schwäche für den Geschmack frischer Kokosnüsse. Außerdem ist er für alle technischen Entscheidungen verantwortlich.

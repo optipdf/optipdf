@@ -1,0 +1,5 @@
+####Um was geht es?
+Eine aufwendige Pdf-Optimierung ist eine Aufgabe, die man nach ein wenig googlen erledigen kann. Selbst wenn man die benötigten Programme in den Griff bekommt, steht man vor dem Problem eines sowohl Geld als auch technische Resourcen verschligenden Prozesses.
+Unser Ziel ist es ausschließlich OpenSource-Programme und einen Warteschlangen-Server zu verwenden um eine erfolgreiche Pdf-Optmierung zu bewerstelligen. Die produzierten Pdfs werden nicht nur seitenweise aufgeteilt, sondern auch mit neuesten Techniken gerendert und rekompiliert. 
+Unser größter Erfolg ist die Erstellung von sogenannten Sandwich-Pdfs, die eine Ebene mit erkanntem Text, eine mit den Bilddaten des Text und, falls im Original vorhanden, eine Ebene mit grafischen Daten, wie Illustrationen oder Bilder, enthalten.
+Mithilfe dieser Techniken haben wir die Möglichkeit nahezu verlustfrei komprimierte, durchsuchbare Pdfs zu erstellen, die einen erheblichen Fortschritt im Bereich der Benutzbarkeit und ihres Speichervolumens darstellen.

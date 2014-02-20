@@ -1,0 +1,47 @@
+.required label:after{
+  content:'*';
+  color:rgb(255,60,80);
+}
+label{
+  display:block;
+}
+input[type=text],input[type=email],select{
+  width:100%;
+  padding:3px 6px;
+  border: 2px solid #777;
+  background-color:#fff;
+}
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  height:20px;
+  width:0%;
+  background-color:rgba(17,136,85,.4);
+}
+.error-message{
+  color:rgb(255,60,80);
+}
+
+.btn {
+  margin-top:8px;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: #fff;
+  background-color:#2FA673;
+  cursor: pointer;
+  padding: 10px 20px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  transition:all 0.2s;
+  &:hover{
+    color: #444;
+    background-color:#4FC693;
+    transition:all 0.4s;
+  }
+}

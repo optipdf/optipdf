@@ -1,7 +1,8 @@
 <div class="grid-container">
     <?php echo $this->Session->flash();?>
-    <h2>Optimize Pdf</h2>
-    <div class="grid-33">
+    
+    <div class="grid-30">
+	<h2>Optimize Pdf</h2>
         <?php
         echo $this->Form->create('Job', array(
             'type' => 'file',
@@ -42,14 +43,14 @@
             'title' => __('some text')//TODO
         ));
         echo $this->Form->input('colormode_id',array(
-            'label'=>__('Colormode'),
+            'label'=>__('Content'),
             'title' => __('some text')//TODO
         ));
         echo $this->Form->submit(__('Optimize'),array('class'=>'btn'));
         echo $this->Form->end();
         ?>
     </div>
-    <div class="grid-66">
+    <div class="grid-70 mobile-grid-100">
         <?php echo $this->App->markdown('input_explanation');?>
     </div>
 </div>
