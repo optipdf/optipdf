@@ -55,7 +55,7 @@
     </div>
 </div>
 <div class="topbar"></div>
-<script type="text/javascript">
+<?php $this->start('callback');?>
     $(document).ready(function() {
         var bar = $('.topbar');
         var options = {
@@ -74,4 +74,4 @@
             return false;
         });
     });
-</script>
+<?php $this->end();?>
