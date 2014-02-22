@@ -1,8 +1,8 @@
 <div class="grid-container">
     <?php echo $this->Session->flash();?>
-    
+
     <div class="grid-30">
-	<h2>Optimize Pdf</h2>
+        <h2>Optimize Pdf</h2>
         <?php
         echo $this->Form->create('Job', array(
             'type' => 'file',
@@ -12,16 +12,14 @@
             'title' => __('some text')//
         ));
         echo $this->Form->input('file',array(
-                'type' => 'file',
-                'label' => __('File'),
-                'title' => __('Specify the pdf you want to optimize')
-            )
-        );
+            'type' => 'file',
+            'label' => __('File'),
+            'title' => __('Specify the pdf you want to optimize')
+        ));
         echo $this->Form->input('author',array(
-                'label'=>__('Author'),
-                'title' => __('some text')//TODO
-            )
-        );
+            'label'=>__('Author'),
+            'title' => __('some text')//TODO
+        ));
         echo $this->Form->input('title',array(
             'label'=>__('Title'),
             'title' => __('some text')//TODO
@@ -32,19 +30,23 @@
         ));
         echo $this->Form->input('format_id',array(
             'label'=>__('Format'),
-            'title' => __('some text')//TODO
+            'title' => __('some text'),//TODO
+            'selected'=>2
         ));
         echo $this->Form->input('rotation_id',array(
             'label'=>__('Rotation'),
-            'title' => __('some text')//TODO
+            'title' => __('some text'),//TODO
+            'selected'=>1
         ));
         echo $this->Form->input('layout_id',array(
             'label'=>__('Layout'),
-            'title' => __('some text')//TODO
+            'title' => __('some text'),//TODO
+            'selected'=>2
         ));
         echo $this->Form->input('colormode_id',array(
             'label'=>__('Content'),
-            'title' => __('some text')//TODO
+            'title' => __('some text'),//TODO
+            'selected'=>1
         ));
         echo $this->Form->submit(__('Optimize'),array('class'=>'btn'));
         echo $this->Form->end();
@@ -55,23 +57,28 @@
     </div>
 </div>
 <div class="topbar"></div>
+<?php
+/**uncompressed callback js
+ * $(document).ready(function() {
+var bar = $('.topbar');
+var options = {
+target: '#content',
+beforeSubmit: function() {
+var percentVal = '0%';
+bar.width(percentVal);
+},
+uploadProgress: function(event, position, total, percentComplete) {
+var percentVal = percentComplete + '%';
+bar.width(percentVal);
+}
+};
+$('#JobAddJobForm').submit(function() {
+$(this).ajaxSubmit(options);
+return false;
+});
+});
+ */
+?>
 <?php $this->start('callback');?>
-    $(document).ready(function() {
-        var bar = $('.topbar');
-        var options = {
-            target: '#content',
-            beforeSubmit: function() {
-                var percentVal = '0%';
-                bar.width(percentVal);
-            },
-            uploadProgress: function(event, position, total, percentComplete) {
-                var percentVal = percentComplete + '%';
-                bar.width(percentVal);
-            }
-        };
-        $('#JobAddJobForm').submit(function() {
-            $(this).ajaxSubmit(options);
-            return false;
-        });
-    });
+$(document).ready(function(){var e=$(".topbar");var t={target:"#content",beforeSubmit:function(){var t="0%";e.width(t)},uploadProgress:function(t,n,r,i){var s=i+"%";e.width(s)}};$("#JobAddJobForm").submit(function(){$(this).ajaxSubmit(t);return false})})
 <?php $this->end();?>
