@@ -11,11 +11,6 @@
             'label'=>__('Email'),
             'title' => __('some text')//
         ));
-        echo $this->Form->input('skip-st',array(
-            'type' => 'checkbox',
-            'label'=>__('Skip Manipulation'),
-            'title' => __('some text')//
-        ));
         echo $this->Form->input('file',array(
             'type' => 'file',
             'label' => __('File'),
@@ -37,6 +32,11 @@
             'label'=>__('Rotation'),
             'title' => __('some text'),//TODO
             'selected'=>1
+        ));
+        echo $this->Form->input('skip-st',array(
+            'type' => 'checkbox',
+            'label'=>__('Skip Manipulation'),
+            'title' => __('some text')//
         ));
         echo $this->Form->input('layout_id',array(
             'label'=>__('Layout'),
