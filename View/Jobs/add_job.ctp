@@ -33,7 +33,7 @@
             'title' => __('some text'),//TODO
             'selected'=>1
         ));
-        echo $this->Form->input('skip-st',array(
+        echo $this->Form->input('skip_st',array(
             'label'=>__('Skip Manipulation'),
             'type' => 'checkbox',
             'title' => __('some text')//
