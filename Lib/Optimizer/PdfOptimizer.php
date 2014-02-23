@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: lukas
+ * Date: 19.01.14
+ * Time: 01:49
+ */
 App::uses('AbstractOptimizer','Lib/Optimizer');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
@@ -11,10 +17,10 @@ class PdfOptimizer extends AbstractOptimizer{
             'title'=>null
         ],
         'Language'=>['option'=>'deu'],
+        'Format'=>['option'=>'a5'],
         'Rotation'=>['option'=>'0'],
         'Layout'=>['option'=>'1'],
-        'colormode_id'=>['option'=>'1'],
-        'skip_st'=>['option'=>'0'],
+        'Colormode'=>['option'=>'black_and_white']//|color_grayscale|mixed
     ];
 
     public function __construct($options = array()){
@@ -38,14 +44,13 @@ class PdfOptimizer extends AbstractOptimizer{
         unlink($this->_path.$this->options['Job']['id'].'.pdf');
         //scantailor processing
         $scanDir = new Folder($this->_path.'scantailor'.DS,true,0755);
-        if($this->options['skip_st']['option']!='0'){
         $cmd = 'scantailor-cli -v --enable-page-detection --enable-fine-tuning --output-dpi=300 --alignment-vertical=center --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode='.$this->options['Colormode']['option'].' --threshold=1 --layout='.$this->options['Layout']['option'].' --despeckle=normal '.$this->_path.'*.tif '.$scanDir->pwd();
         parent::_exec($cmd,'scantailor-cli');
         $files = $dir->find('.*\.tif',true);
         parent::_cleanUp($dir->pwd(),$files);
         $files = $scanDir->find('.*\.tif',true);
         parent::_moveTo($scanDir->pwd(),$dir->pwd(),$files);
-        $scanDir->delete();}
+        $scanDir->delete();
         //tesseract tif to html
         $files = $dir->find('.*\.tif',true);
         foreach($files as $file){
@@ -72,4 +77,4 @@ class PdfOptimizer extends AbstractOptimizer{
         return;
     }
 
-}
+} 
