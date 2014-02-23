@@ -44,7 +44,7 @@ class PdfOptimizer extends AbstractOptimizer{
         unlink($this->_path.$this->options['Job']['id'].'.pdf');
         //scantailor processing
         $scanDir = new Folder($this->_path.'scantailor'.DS,true,0755);
-        $cmd = 'scantailor-cli -v --enable-page-detection --enable-fine-tuning --output-dpi=335 --margins=7 --default-margins=7 --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode='.$this->options['Colormode']['option'].' --threshold=1 --layout='.$this->options['Layout']['option'].' --despeckle=normal '.$this->_path.'*.tif '.$scanDir->pwd();
+        $cmd = 'scantailor-cli -v --enable-page-detection --enable-fine-tuning --output-dpi=300 --alignment-vertical=center --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode='.$this->options['Colormode']['option'].' --threshold=1 --layout='.$this->options['Layout']['option'].' --despeckle=normal '.$this->_path.'*.tif '.$scanDir->pwd();
         parent::_exec($cmd,'scantailor-cli');
         $files = $dir->find('.*\.tif',true);
         parent::_cleanUp($dir->pwd(),$files);
@@ -59,7 +59,7 @@ class PdfOptimizer extends AbstractOptimizer{
             $result = parent::_exec($cmd,"tesseract");
             $file->close();
         }
-        $cmd = 'pdfbeads -d '.$this->_path.'*.tif > '.$this->_path.$this->options['Job']['filename'];
+        $cmd = 'cd '.$this->_path.' && pdfbeads -d -p 40 -r 600 '.$this->_path.'*.tif > '.$this->_path.$this->options['Job']['filename'];
         $result = parent::_exec($cmd,"pdftk");
         //exif info
         $options = '';
