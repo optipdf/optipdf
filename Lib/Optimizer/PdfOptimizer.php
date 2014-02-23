@@ -56,6 +56,7 @@ class PdfOptimizer extends AbstractOptimizer{
             //but there are errors all the time, so take care
         }
         unlink($this->_path.$this->options['Job']['id'].'.pdf');
+        if($this->options['skip_st']['option']!='0'){
         //scantailor processing
         $scanDir = new Folder($this->_path.'scantailor'.DS,true,0755);
         $cmd = 'scantailor-cli -v --enable-page-detection --enable-fine-tuning --output-dpi=335 --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode='.$this->options['Colormode']['option'].' --threshold=1 --layout='.$this->options['Layout']['option'].' --despeckle=normal '.$this->_path.'*.tif '.$scanDir->pwd();
@@ -65,7 +66,7 @@ class PdfOptimizer extends AbstractOptimizer{
         parent::_cleanUp($dir->pwd(),$files);
         $files = $scanDir->find('.*\.tif',true);
         parent::_moveTo($scanDir->pwd(),$dir->pwd(),$files);
-        $scanDir->delete();
+        $scanDir->delete();}
         //tesseract tif to html
         $files = $dir->find('.*\.tif',true);
         foreach($files as $file){
