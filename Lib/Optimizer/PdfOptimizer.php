@@ -9,11 +9,11 @@ class PdfOptimizer extends AbstractOptimizer{
         'Job'=>[
             'author'=>null,
             'title'=>null,
-            'skip_st'=>['option'=>'0']
+            'skip_st'=> '0'
         ],
         'Language'=>['option'=>'deu'],
         'Rotation'=>['option'=>'0'],
-        'Layout'=>['option'=>'1'],
+        'Layout'=>['option'=>'0'],
         'Colormode'=>['option'=>'black_and_white'],//|color_grayscale|mixed
     ];
 
@@ -50,17 +50,17 @@ class PdfOptimizer extends AbstractOptimizer{
             //but there are errors all the time, so take care
         }
         unlink($this->_path.$this->options['Job']['id'].'.pdf');
-        if($this->options['Job']['skip_st']['option']=='0'){
-        //scantailor processing
-        $scanDir = new Folder($this->_path.'scantailor'.DS,true,0755);
-        $cmd = 'scantailor-cli -v --enable-page-detection --enable-fine-tuning --output-dpi=335 --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode='.$this->options['Colormode']['option'].' --threshold=1 --layout='.$this->options['Layout']['option'].' --despeckle=normal '.$this->_path.'*.tif '.$scanDir->pwd();
-        $result = parent::_exec($cmd,'scantailor-cli');
-        CakeLog::write('optishell', serialize($result));
-        $files = $dir->find('.*\.tif',true);
-        parent::_cleanUp($dir->pwd(),$files);
-        $files = $scanDir->find('.*\.tif',true);
-        parent::_moveTo($scanDir->pwd(),$dir->pwd(),$files);
-        $scanDir->delete();}
+        if($this->options['Job']['option']==0){
+            //scantailor processing
+            $scanDir = new Folder($this->_path.'scantailor'.DS,true,0755);
+            $cmd = 'scantailor-cli -v --enable-page-detection --enable-fine-tuning --output-dpi=335 --alignment-vertical=top --alignment-horizontal=center --white-margins=true --normalize-illumination=true --tiff-compression=none --color-mode='.$this->options['Colormode']['option'].' --threshold=1 --layout='.$this->options['Layout']['option'].' --despeckle=normal '.$this->_path.'*.tif '.$scanDir->pwd();
+            $result = parent::_exec($cmd,'scantailor-cli');
+            CakeLog::write('optishell', serialize($result));
+            $files = $dir->find('.*\.tif',true);
+            parent::_cleanUp($dir->pwd(),$files);
+            $files = $scanDir->find('.*\.tif',true);
+            parent::_moveTo($scanDir->pwd(),$dir->pwd(),$files);
+            $scanDir->delete();}
         //tesseract tif to html
         $files = $dir->find('.*\.tif',true);
         foreach($files as $file){
