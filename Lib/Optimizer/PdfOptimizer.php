@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lukas
- * Date: 19.01.14
- * Time: 01:49
- */
 App::uses('AbstractOptimizer','Lib/Optimizer');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');
@@ -20,7 +14,6 @@ class PdfOptimizer extends AbstractOptimizer{
         'Format'=>['option'=>'a5'],
         'Rotation'=>['option'=>'0'],
         'Layout'=>['option'=>'1'],
-        'Colormode'=>['option'=>'black_and_white']//|color_grayscale|mixed
     ];
 
     public function __construct($options = array()){

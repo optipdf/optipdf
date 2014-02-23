@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lukas
- * Date: 19.01.14
- * Time: 02:06
- */
 App::uses('File', 'Utility');
 class AbstractOptimizer {
 
