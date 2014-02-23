@@ -28,15 +28,15 @@
             'label'=>__('Document language'),
             'title' => __('some text')//TODO
         ));
-        echo $this->Form->input('format_id',array(
-            'label'=>__('Format'),
-            'title' => __('some text'),//TODO
-            'selected'=>2
-        ));
         echo $this->Form->input('rotation_id',array(
             'label'=>__('Rotation'),
             'title' => __('some text'),//TODO
             'selected'=>1
+        ));
+        echo $this->Form->input('skip_st',array(
+            'label'=>__('Skip Manipulation'),
+            'type' => 'checkbox',
+            'title' => __('some text')//
         ));
         echo $this->Form->input('layout_id',array(
             'label'=>__('Layout'),

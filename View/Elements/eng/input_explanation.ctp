@@ -1,8 +1,8 @@
 ##What you should put in here:
 ####E-Mail
 Please enter your Adress. Please don't use trash- or minutemail adresses, since the processing takes more than 10 minutes. Your adress and all data belonging to it will be deleted within two weeks, in case you don't delete them yourself.
-####Format
-Layout in which you want to display the result. This is not related to the skaling of the actual images, since the are vectorized in the result.
+####Skip Manipulation
+Skip the actual Image-Manipulation. This is useful if you put in pre-optimized images. The images will only get rotated (if chosen), the text will be recognized and the result will be compressed.
 ####Rotation
 Put in the needed rotation for your PDF, so we can unrotate it for you. This is important, since your results will be screwed if thats wrong.
 ####Layout
