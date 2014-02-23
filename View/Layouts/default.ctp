@@ -12,8 +12,7 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		Optipdf:
-		<?php echo $title_for_layout; ?>
+		<?php echo $title_for_layout; ?> &raquo; Optipdf
 	</title>
 	<?php
 		echo $this->Html->meta('icon','logo.ico');
@@ -38,7 +37,7 @@
                         <li><?php echo $this->Html->link('Home',array('controller'=>'pages','action'=>'display','index'));?></li>
                         <li><?php echo $this->Html->link('Optimize',array('controller' => 'jobs', 'action' => 'addJob'));?></li>
                         <li><?php echo $this->Html->link('Blog','http://blog.optipdf.de');?></li>
-                        <li><?php echo $this->Html->link('<i class="fa fa-github"></i>','https://github.com/sakulstra/optipdf',array('escape'=>false,'class'=>'menuico','target'=>'_blank'));?></li>
+                        <li><?php echo $this->Html->link('<i class="fa fa-github"></i>','https://github.com/optipdf/optipdf',array('escape'=>false,'class'=>'menuico','target'=>'_blank'));?></li>
                         <li><?php echo $this->Html->link('<i class="fa fa-facebook-square"></i>','https://www.facebook.com/optipdf',array('escape'=>false,'class'=>'menuico','target'=>'_blank'));?></li>
                     </ul>
                 </nav>
