@@ -80,7 +80,7 @@ class PdfOptimizer extends AbstractOptimizer{
             }
             $file->close();
         }
-        $cmd = 'cd '.$this->_path.' && pdfbeads -d -P SinglePage -r 600 *.tif > '.$this->_path.$this->options['Job']['filename'];
+        $cmd = 'cd '.$this->_path.' && pdfbeads -d -P SinglePage -r 600 *.tif -o '.$this->_path.$this->options['Job']['filename'];
         $result = parent::_exec($cmd,"pdftk");
         CakeLog::write('optishell', serialize($result));
         //exif info
