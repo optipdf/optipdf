@@ -17,7 +17,6 @@ class PdfOptimizer extends AbstractOptimizer{
             'title'=>null
         ],
         'Language'=>['option'=>'deu'],
-        'Format'=>['option'=>'a5'],
         'Rotation'=>['option'=>'0'],
         'Layout'=>['option'=>'1'],
         'Colormode'=>['option'=>'black_and_white'],//|color_grayscale|mixed
