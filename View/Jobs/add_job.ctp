@@ -35,6 +35,7 @@
         ));
         echo $this->Form->input('skip_st',array(
             'label'=>__('Skip Manipulation'),
+            'type' => 'checkbox'
         ));
         echo $this->Form->input('layout_id',array(
             'label'=>__('Layout'),
