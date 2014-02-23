@@ -21,6 +21,7 @@ class PdfOptimizer extends AbstractOptimizer{
         'Rotation'=>['option'=>'0'],
         'Layout'=>['option'=>'1'],
         'Colormode'=>['option'=>'black_and_white']//|color_grayscale|mixed
+        'skip_st'=>['option'=>'0']
     ];
 
     public function __construct($options = array()){
