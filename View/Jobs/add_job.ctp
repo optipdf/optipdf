@@ -47,7 +47,10 @@
             'title' => __('some text'),//TODO
             'selected'=>1
         ));
-        echo $this->Form->submit(__('Optimize'),array('class'=>'btn'));
+        echo $this->Form->submit(__('Optimize'),array(
+            'class'=>'btn',
+            'name'=>'optimize'
+        ));
         echo $this->Form->end();
         ?>
     </div>
